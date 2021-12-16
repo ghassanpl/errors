@@ -1,0 +1,8 @@
+{
+  "name": "ghassanpl-errors",
+  "version": "0.0.1",
+  "dependencies": [
+    "gtest",
+    "boost-stacktrace"
+  ]
+}
