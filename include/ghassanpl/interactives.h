@@ -23,6 +23,7 @@ namespace ghassanpl::err
 
 		debugger_connection request_system_debugger();
 
+		/// https://github.com/CarloWood/libcwd/blob/8d866ee338fd398bf917e12730fa87f1ae184f32/utils/attach_gdb.cc
 		debugger_connection connect_to_debugger(uri_view address);
 
 		debugger_connection under_debugger();

@@ -1,5 +1,6 @@
 #pragma once
 
+#if 0
 #include "detail/common.h"
 
 #include <system_error>
@@ -129,3 +130,5 @@ namespace ghassanpl::err
 	using error_result = basic_error_result<>;
 
 }
+
+#endif

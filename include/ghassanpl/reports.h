@@ -6,6 +6,8 @@
 
 namespace ghassanpl::err
 {
+	/// To consider: https://docs.microsoft.com/en-us/windows/win32/wer/about-wer
+
 	using urgency_t = int;
 
 	enum class notification_medium

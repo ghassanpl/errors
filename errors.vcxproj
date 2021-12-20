@@ -156,6 +156,7 @@
     <ClInclude Include="include\ghassanpl\detail\addresses.h" />
     <ClInclude Include="include\ghassanpl\detail\common.h" />
     <ClInclude Include="include\ghassanpl\diagnostics.h" />
+    <ClInclude Include="include\ghassanpl\dumps.h" />
     <ClInclude Include="include\ghassanpl\errors.h" />
     <ClInclude Include="include\ghassanpl\error_sinks.h" />
     <ClInclude Include="include\ghassanpl\exceptions.h" />
@@ -164,11 +165,15 @@
     <ClInclude Include="include\ghassanpl\logs.h" />
     <ClInclude Include="include\ghassanpl\reports.h" />
     <ClInclude Include="include\ghassanpl\results.h" />
+    <ClInclude Include="include\ghassanpl\versions.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\detail\addresses.cpp" />
+    <ClCompile Include="src\logs.cpp" />
     <ClCompile Include="tests\tests.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="tests\uri_tests.inc" />
     <None Include="vcpkg.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

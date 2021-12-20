@@ -2,7 +2,12 @@
   "name": "ghassanpl-errors",
   "version": "0.0.1",
   "dependencies": [
+    "tl-expected",
+    "abseil",
+
     "gtest",
-    "boost-stacktrace"
+    "boost-stacktrace",
+    "magic-enum",
+    "nlohmann-json"
   ]
 }

@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\detail">
+      <UniqueIdentifier>{d7c27292-3733-45b1-8690-c47290862779}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ghassanpl\asserts.h">
@@ -22,9 +25,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\ghassanpl\error_sinks.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\ghassanpl\errors.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\ghassanpl\exceptions.h">
@@ -39,25 +39,43 @@
     <ClInclude Include="include\ghassanpl\results.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\ghassanpl\detail\common.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\ghassanpl\logs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\ghassanpl\interactives.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\ghassanpl\detail\addresses.h">
+    <ClInclude Include="include\ghassanpl\dumps.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ghassanpl\versions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ghassanpl\detail\addresses.h">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ghassanpl\detail\common.h">
+      <Filter>Header Files\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ghassanpl\errors.h">
+      <Filter>Header Files\detail</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="tests\tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\detail\addresses.cpp">
+      <Filter>Header Files\detail</Filter>
+    </ClCompile>
+    <ClCompile Include="src\logs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="vcpkg.json" />
+    <None Include="tests\uri_tests.inc">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
