@@ -13,24 +13,28 @@ namespace ghassanpl::err
 
 	namespace debugger
 	{
-		struct debugger_connection_t;
+		struct debugger_connection
+		{
+			bool valid() const;
+			bool ready() const;
 
-		using debugger_connection = debugger_connection_t*;
+			bool disconnect();
 
-		bool valid_connection(debugger_connection connection);
-		bool fully_connected(debugger_connection connection);
-		bool disconnect(debugger_connection connection);
+			uri address() const;
+
+			std::string debugger_name();
+
+			void request_break();
+			void output_debug_mesage(std::string_view message);
+			void request_command(std::string_view command);
+		};
+
+		debugger_connection under_debugger();
 
 		debugger_connection request_system_debugger();
 
 		/// https://github.com/CarloWood/libcwd/blob/8d866ee338fd398bf917e12730fa87f1ae184f32/utils/attach_gdb.cc
 		debugger_connection connect_to_debugger(uri_view address);
-
-		debugger_connection under_debugger();
-
-		void request_break(debugger_connection connection = {});
-
-		void output_debug_mesage(std::string_view message, debugger_connection connection = {});
 
 		struct debugger_session_listener
 		{

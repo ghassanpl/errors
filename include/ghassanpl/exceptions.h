@@ -6,6 +6,18 @@
 
 namespace ghassanpl::err
 {
+	/// TODO: Ways to interact with system exceptions (win seh, arm faults, etc)
+	/// https://wiki.segger.com/Cortex-M_Fault
+	/// https://docs.microsoft.com/en-us/windows/win32/debug/structured-exception-handling
+	/// https://docs.microsoft.com/en-us/cpp/cpp/structured-exception-handling-c-cpp?view=msvc-170
+
+	/// <summary>
+	///  
+	/// </summary>
+	/// <typeparam name="FUNC"></typeparam>
+	/// <param name="e"></param>
+	/// <param name="func"></param>
+
 	template <typename FUNC>
 	void for_each_nested_exception(std::exception const& e, FUNC&& func)
 	{
