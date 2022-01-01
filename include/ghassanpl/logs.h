@@ -11,28 +11,32 @@ namespace ghassanpl::err
 {
 	using log_return_type = void;
 	
-	/// self-registering class
 	struct log_domain
 	{
-		log_domain(std::string_view name);
-		~log_domain() noexcept;
+		log_domain(std::string_view name_)
+			: name(name_)
+		{
 
-		std::string name;
+		}
+
+		std::string const name;
 		std::vector<info_source*> info_sources_to_query;
 	};
 
 	template <typename T>
 	concept log_domain_ref = std::convertible_to<T, log_domain const&> || std::constructible_from<std::string_view, T&&>;
 
+	void register_domain(log_domain const& domain);
+	void unregister_domain(log_domain const& domain);
 	std::set<log_domain const*> registered_domains();
 
 	log_domain const& default_application_log_domain();
 
-	struct per_file_domain
+	struct domain_for_file
 	{
-		per_file_domain(log_domain const& domain, std::source_location loc = std::source_location::current());
+		domain_for_file(log_domain const& domain, std::source_location loc = std::source_location::current());
 		
-		/// TODO: per_file_domain(log_domain_ref auto domain, std::source_location loc = std::source_location::current());
+		/// TODO: domain_for_file(log_domain_ref auto domain, std::source_location loc = std::source_location::current());
 		/// This would store the name of the domain if given, and only resolve to the actual domain when asked for
 
 		log_domain const& domain() const noexcept { return mDomain; }
@@ -51,10 +55,13 @@ namespace ghassanpl::err
 
 	struct log_entry_type
 	{
-		log_entry_type(std::string_view name);
-		~log_entry_type() noexcept;
+		log_entry_type(std::string_view name_)
+			: name(name_)
+		{
 
-		std::string name;
+		}
+		
+		std::string const name;
 		std::vector<info_source*> info_sources_to_query;
 
 		log_response default_response = log_response::none;
@@ -66,6 +73,8 @@ namespace ghassanpl::err
 		log_return_type operator()(with_sl<std::string_view> fmt, ARGS&&... args) const;
 	};
 
+	void register_entry_type(log_entry_type const& type);
+	void unregister_entry_type(log_entry_type const& type);
 	std::set<log_entry_type const*> registered_entry_types();
 
 	namespace level
@@ -80,14 +89,13 @@ namespace ghassanpl::err
 
 	struct log_point
 	{
-		log_point(log_entry_type const& type_, log_domain const& domain_ = default_application_log_domain(), std::source_location location_ = std::source_location::current())
-			: type(type_), domain(domain_), location(location_)
-		{
-		}
+		log_point(log_entry_type const& type_, log_domain const& domain_ = default_application_log_domain(), std::source_location location_ = std::source_location::current());
 
 		log_entry_type const& type;
 		log_domain const& domain;
 		std::source_location const location{};
+
+		size_t const id = 0;
 
 		constexpr bool operator==(log_point const& other) const noexcept { return this == std::addressof(other); }
 		constexpr auto operator<=>(log_point const& other) const noexcept { return this <=> std::addressof(other); }
